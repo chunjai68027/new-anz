@@ -7,18 +7,18 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
 <style>
   :root{
-    --bg:#0b1015;
-    --panel:#111820;
-    --panel-2:#151d27;
-    --line:#22303c;
-    --line-soft:#1b2630;
-    --ice:#7fd3e8;
-    --ice-dim:#3f6b78;
-    --gold:#e0b168;
-    --red:#e07070;
-    --text:#e7edf1;
-    --text-dim:#8fa3b0;
-    --text-faint:#5b6d78;
+    --bg:#1c130f;
+    --panel:#26190f;
+    --panel-2:#302013;
+    --line:#4a3420;
+    --line-soft:#3a2818;
+    --ice:#ff9a5a;
+    --ice-dim:#a35a34;
+    --gold:#ffcf6b;
+    --red:#ff6f61;
+    --text:#faf1e6;
+    --text-dim:#d6b79f;
+    --text-faint:#9c7d63;
     --radius:10px;
     --font-display: 'Georgia', 'Times New Roman', serif;
     --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -37,7 +37,7 @@
     border-bottom:1px solid var(--line);
     padding:28px 0 22px;
     background:
-      radial-gradient(ellipse 900px 260px at 15% -20%, rgba(127,211,232,0.10), transparent 60%),
+      radial-gradient(ellipse 900px 260px at 15% -20%, rgba(255,154,90,0.10), transparent 60%),
       var(--bg);
   }
   .eyebrow{
@@ -67,7 +67,7 @@
   }
   .day-tab[draggable="true"]{cursor:grab;}
   .day-tab.dragging{opacity:.35;}
-  .day-tab.drag-over{border-color:var(--ice);box-shadow:0 0 0 2px rgba(127,211,232,.25);}
+  .day-tab.drag-over{border-color:var(--ice);box-shadow:0 0 0 2px rgba(255,154,90,.25);}
   .day-tab .drag-handle{color:var(--text-faint);font-size:12px;line-height:1;user-select:none;}
   .day-tab .reorder-btns{display:flex;flex-direction:column;gap:0;margin-left:2px;}
   .day-tab .reorder-btns button{
@@ -84,7 +84,7 @@
     font-family:var(--font-mono);font-size:11.5px;color:var(--ice);background:transparent;
     border:1px dashed var(--ice-dim);padding:8px 14px;border-radius:20px;
   }
-  .day-tab-add:hover{background:rgba(127,211,232,.08);}
+  .day-tab-add:hover{background:rgba(255,154,90,.08);}
 
   .add-day-form{
     display:none;gap:10px;align-items:center;flex-wrap:wrap;background:var(--panel);
@@ -106,21 +106,21 @@
   .head-right{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
 
   .route-map-btn{
-    font-family:var(--font-mono);font-size:11.5px;color:#0b1015;background:var(--ice);
+    font-family:var(--font-mono);font-size:11.5px;color:#1c130f;background:var(--ice);
     border:none;padding:8px 16px;border-radius:20px;font-weight:700;display:inline-flex;align-items:center;gap:6px;
   }
   .route-map-btn:hover{background:#96ddec;}
 
   .map-grid{display:grid;grid-template-columns:1fr 300px;gap:0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;position:relative;}
-  #map{height:460px;width:100%;background:#0d141a;}
-  .leaflet-container{background:#0d141a;font-family:var(--font-body);}
+  #map{height:460px;width:100%;background:#17110b;}
+  .leaflet-container{background:#17110b;font-family:var(--font-body);}
 
   .layer-toggle{
     position:absolute;top:12px;left:12px;z-index:500;display:flex;
     background:rgba(11,16,21,.85);border:1px solid var(--line);border-radius:8px;overflow:hidden;
   }
   .layer-toggle button{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.05em;color:var(--text-dim);background:transparent;border:none;padding:7px 12px;}
-  .layer-toggle button.active{background:var(--ice);color:#0b1015;font-weight:700;}
+  .layer-toggle button.active{background:var(--ice);color:#1c130f;font-weight:700;}
   .route-status{
     position:absolute;bottom:12px;left:12px;z-index:500;font-family:var(--font-mono);font-size:10.5px;
     color:var(--text-dim);background:rgba(11,16,21,.85);border:1px solid var(--line);border-radius:6px;padding:5px 10px;
@@ -160,14 +160,14 @@
   .detail-region{font-size:12.5px;color:var(--text-faint);margin-top:2px;}
   .detail-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
   .detail-dur{
-    font-family:var(--font-mono);font-size:11px;color:var(--gold);border:1px solid rgba(224,177,104,.35);
-    background:rgba(224,177,104,.08);padding:5px 10px;border-radius:20px;white-space:nowrap;
+    font-family:var(--font-mono);font-size:11px;color:var(--gold);border:1px solid rgba(255,207,107,.35);
+    background:rgba(255,207,107,.08);padding:5px 10px;border-radius:20px;white-space:nowrap;
   }
   .gmaps-btn{
     font-family:var(--font-mono);font-size:11px;color:var(--ice);text-decoration:none;border:1px solid var(--ice-dim);
-    background:rgba(127,211,232,.08);padding:6px 12px;border-radius:20px;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;
+    background:rgba(255,154,90,.08);padding:6px 12px;border-radius:20px;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;
   }
-  .gmaps-btn:hover{background:rgba(127,211,232,.16);}
+  .gmaps-btn:hover{background:rgba(255,154,90,.16);}
   .tag-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;}
   .tag{font-size:12px;color:var(--text-dim);background:var(--panel-2);border:1px solid var(--line);padding:5px 11px;border-radius:20px;}
 
@@ -191,16 +191,16 @@
   .leg-connector-line{width:16px;height:0;border-top:1px dashed var(--line);flex-shrink:0;}
   .directions-btn{
     font-family:var(--font-mono);font-size:11px;color:var(--ice);text-decoration:none;
-    border:1px solid var(--ice-dim);background:rgba(127,211,232,.08);
+    border:1px solid var(--ice-dim);background:rgba(255,154,90,.08);
     padding:5px 12px;border-radius:20px;display:inline-flex;align-items:center;gap:6px;
   }
-  .directions-btn:hover{background:rgba(127,211,232,.16);}
+  .directions-btn:hover{background:rgba(255,154,90,.16);}
   .directions-toggle-row{display:flex;align-items:center;gap:10px;margin-top:6px;}
 
   .tool-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
   .tool-btn{font-family:var(--font-mono);font-size:11.5px;color:var(--text-dim);background:var(--panel);border:1px solid var(--line);padding:9px 14px;border-radius:8px;}
   .tool-btn:hover{border-color:var(--ice-dim);color:var(--ice);}
-  .tool-btn.active{border-color:var(--ice);color:var(--ice);background:rgba(127,211,232,.1);}
+  .tool-btn.active{border-color:var(--ice);color:var(--ice);background:rgba(255,154,90,.1);}
   .form-card{display:none;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin-top:14px;}
   .form-card.open{display:block;}
   .form-card h4{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);margin:0 0 14px;}
@@ -211,7 +211,7 @@
   .form-grid input:focus,.form-grid select:focus,.form-grid textarea:focus{outline:none;border-color:var(--ice-dim);}
   .form-grid textarea{min-height:70px;resize:vertical;}
   .form-actions{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap;}
-  .primary-btn{font-family:var(--font-mono);font-size:12px;color:#0b1015;background:var(--ice);border:none;padding:9px 18px;border-radius:8px;font-weight:700;}
+  .primary-btn{font-family:var(--font-mono);font-size:12px;color:#1c130f;background:var(--ice);border:none;padding:9px 18px;border-radius:8px;font-weight:700;}
   .primary-btn:hover{background:#96ddec;}
   .hint{font-size:11.5px;color:var(--text-faint);}
   .field-error{color:var(--red);font-size:11.5px;margin-top:4px;display:none;}
@@ -225,10 +225,10 @@
   .notes-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
   .notes-links a{
     font-family:var(--font-mono);font-size:11.5px;color:var(--ice);text-decoration:none;
-    border:1px solid var(--ice-dim);background:rgba(127,211,232,.08);padding:6px 12px;border-radius:20px;
+    border:1px solid var(--ice-dim);background:rgba(255,154,90,.08);padding:6px 12px;border-radius:20px;
     display:inline-flex;align-items:center;gap:6px;max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
   }
-  .notes-links a:hover{background:rgba(127,211,232,.16);}
+  .notes-links a:hover{background:rgba(255,154,90,.16);}
   .notes-saved{font-family:var(--font-mono);font-size:10.5px;color:var(--text-faint);margin-top:8px;height:14px;}
 
   .foot-note{margin-top:32px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--text-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
@@ -257,7 +257,7 @@
   .modal-stats .m{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);}
   .modal-stats b{display:block;font-family:var(--font-display);font-size:22px;color:var(--ice);font-weight:400;margin-bottom:2px;}
   .modal-body{display:flex;flex:1;min-height:0;}
-  #modalMap{flex:1;background:#0d141a;}
+  #modalMap{flex:1;background:#17110b;}
   .modal-days{width:270px;border-left:1px solid var(--line);overflow-y:auto;padding:12px;flex-shrink:0;}
   .modal-days-actions{display:flex;gap:8px;margin-bottom:10px;}
   .modal-days-actions .tool-btn{flex:1;text-align:center;}
@@ -338,9 +338,9 @@
       <div class="stop-rail" id="stopRail"></div>
     </div>
     <div class="legend">
-      <span><i style="background:#e0b168"></i> Start / end</span>
-      <span><i style="background:#7fd3e8"></i> Waypoint</span>
-      <span><i style="background:#e07070"></i> Signature stop</span>
+      <span><i style="background:#ffcf6b"></i> Start / end</span>
+      <span><i style="background:#ff9a5a"></i> Waypoint</span>
+      <span><i style="background:#ff6f61"></i> Signature stop</span>
     </div>
   </section>
 
@@ -535,6 +535,67 @@ const EXTRA_DAYS = [
       {name:"Glenorchy-Scenic Road", region:"Glenorchy-Paradise Road, Otago 9372, New Zealand", lat:-44.7900, lng:168.3770, kind:"way", duration:null, tags:["Horse riding 2:30pm"]},
       {name:"Queenstown", region:"Otago, New Zealand", lat:-45.0312, lng:168.6626, kind:"anchor", duration:null, tags:["End of day"]}
     ]
+  },
+  {
+    id: "d4",
+    date: "2026-11-13",
+    title: "Sydney Arrival Day",
+    subtitle: "HKG → Sydney → CBD & Harbour Bridge",
+    notes: "1. Flight CX161 — departs Hong Kong 21:20, arrives Sydney 09:35\n3. Ragazzi — Alternative is Bouillon L'Entrecote\n4. Lune Croissanterie Sydney CBD — Afternoon tea, closes at 17:00\n5. Circular Quay — Boat trip maybe tbc, book in advance if so\n6. Sydney Harbour Bridge — Sunset ~7:30pm\n7. Porteno — Maybe ~8:30pm since sunset is ~7:30, take pics, make way there",
+    stops: [
+      {name:"Sydney Kingsford Smith Airport – Terminal 1", region:"Mascot, Sydney NSW, Australia", lat:-33.9399, lng:151.1753, kind:"anchor", duration:null, tags:["Flight CX161 arrival 09:35"]},
+      {name:"The Porter House Hotel Sydney – MGallery Collection", region:"203 Castlereagh St, Sydney NSW 2000", lat:-33.8749, lng:151.2094, kind:"way", duration:null, tags:["Check in"]},
+      {name:"Ragazzi", region:"Sydney CBD, NSW, Australia", lat:-33.8721, lng:151.2054, kind:"way", duration:null, tags:[]},
+      {name:"Lune Croissanterie Sydney CBD", region:"111 Harrington St, The Rocks, NSW", lat:-33.8599, lng:151.2073, kind:"way", duration:null, tags:[]},
+      {name:"Circular Quay", region:"Sydney NSW, Australia", lat:-33.8613, lng:151.2108, kind:"way", duration:null, tags:[]},
+      {name:"Sydney Harbour Bridge", region:"Dawes Point, Sydney NSW, Australia", lat:-33.8523, lng:151.2108, kind:"signature", duration:null, tags:[]},
+      {name:"Porteno", region:"358 Cleveland St, Surry Hills NSW", lat:-33.8886, lng:151.2129, kind:"way", duration:null, tags:[]},
+      {name:"The Porter House Hotel Sydney – MGallery Collection", region:"203 Castlereagh St, Sydney NSW 2000", lat:-33.8749, lng:151.2094, kind:"anchor", duration:null, tags:["End of day"]}
+    ]
+  },
+  {
+    id: "d5",
+    date: "2026-11-14",
+    title: "Bondi Day",
+    subtitle: "Bondi Beach → Icebergs → Bondi Junction",
+    notes: "2. Bills, Bondi Beach — Uber over (~15 min ride), or somewhere nearby for brunch. Alternative: The Nine\n4. Bondi Beach — Salty's Bondi or Glory Days Bondi for refreshments\n5. Westfield Bondi Junction — knife crime incident 2 years ago, check whether it's safe\n7. Maybe Sammy — or another good bar, but Maybe Sammy is the No.1 pick",
+    stops: [
+      {name:"The Porter House Hotel Sydney – MGallery Collection", region:"203 Castlereagh St, Sydney NSW 2000", lat:-33.8749, lng:151.2094, kind:"anchor", duration:null, tags:["Start of day"]},
+      {name:"Bills", region:"79 Hall St, Bondi Beach NSW 2026", lat:-33.8927, lng:151.2740, kind:"way", duration:null, tags:["Brunch"]},
+      {name:"Bondi Icebergs Swimming Club", region:"1 Notts Ave, Bondi Beach NSW", lat:-33.8938, lng:151.2777, kind:"way", duration:null, tags:[]},
+      {name:"Bondi Beach", region:"Bondi Beach NSW, Australia", lat:-33.8908, lng:151.2743, kind:"signature", duration:null, tags:[]},
+      {name:"Westfield Bondi Junction", region:"500 Oxford St, Bondi Junction NSW", lat:-33.8916, lng:151.2477, kind:"way", duration:null, tags:[]},
+      {name:"Bar Totti's", region:"Notts Ave, Bondi Beach NSW", lat:-33.8930, lng:151.2765, kind:"way", duration:null, tags:[]},
+      {name:"Maybe Sammy", region:"111 Macquarie St, Sydney NSW", lat:-33.8657, lng:151.2110, kind:"way", duration:null, tags:[]}
+    ]
+  },
+  {
+    id: "d6",
+    date: "2026-11-15",
+    title: "Zoo & City Day",
+    subtitle: "Sydney Zoo → Darlinghurst → CBD → Botanic Garden",
+    notes: "2. Sydney Zoo — Quokka Encounter 11:30 session, ~1.5hr commute so leave hotel by 9:30am. Also see wombat, capybara, red panda\n3. Sandoitchi, Darlinghurst — Alternative: Akipan!",
+    stops: [
+      {name:"The Porter House Hotel Sydney – MGallery Collection", region:"203 Castlereagh St, Sydney NSW 2000", lat:-33.8749, lng:151.2094, kind:"anchor", duration:null, tags:["Start of day"]},
+      {name:"Sydney Zoo", region:"700 Great Western Hwy, Eastern Creek NSW 2766", lat:-33.7947, lng:150.8619, kind:"signature", duration:null, tags:["Quokka Encounter 11:30"]},
+      {name:"Sandoitchi Darlinghurst", region:"Darlinghurst, Sydney NSW", lat:-33.8790, lng:151.2210, kind:"way", duration:null, tags:[]},
+      {name:"Queen Victoria Building", region:"455 George St, Sydney NSW", lat:-33.8713, lng:151.2067, kind:"way", duration:null, tags:[]},
+      {name:"Royal Botanic Garden", region:"Mrs Macquaries Rd, Sydney NSW", lat:-33.8642, lng:151.2166, kind:"way", duration:null, tags:[]},
+      {name:"Cahill Walk Lookout", region:"Sydney CBD, NSW, Australia", lat:-33.8602, lng:151.2138, kind:"way", duration:null, tags:[]}
+    ]
+  },
+  {
+    id: "d7",
+    date: "2026-11-16",
+    title: "Sydney → Queenstown",
+    subtitle: "Fly out via Sydney Airport, arrive Queenstown",
+    notes: "2. Sydney Airport — Flight departs 09:15, leave hotel 6:30am, take T8 Macarthur line via Airport",
+    stops: [
+      {name:"The Porter House Hotel Sydney – MGallery Collection", region:"203 Castlereagh St, Sydney NSW 2000", lat:-33.8749, lng:151.2094, kind:"anchor", duration:null, tags:["Start of day"]},
+      {name:"Sydney Kingsford Smith Airport", region:"Mascot, Sydney NSW, Australia", lat:-33.9399, lng:151.1753, kind:"way", duration:null, tags:["Flight departs 09:15"]},
+      {name:"Queenstown Airport", region:"Queenstown, New Zealand", lat:-45.0211, lng:168.7392, kind:"way", duration:null, tags:[]},
+      {name:"Hilton Queenstown Resort & Spa", region:"Kawarau Village, Peninsula Rd, Queenstown", lat:-45.0447, lng:168.7561, kind:"anchor", duration:null, tags:["End of day"]}
+    ]
   }
 ];
 
@@ -546,7 +607,7 @@ let mainRouteToken = 0;
 let showDirections = false;
 let notesSaveTimer = null;
 
-const DAY_COLORS = ["#7fd3e8","#e0b168","#e07070","#9fd67f","#c79fe8","#e89fc7","#f2c14e"];
+const DAY_COLORS = ["#ff9a5a","#ffcf6b","#ff6f61","#9fd67f","#c79fe8","#e89fc7","#f2c14e"];
 const colorForDay = idx => DAY_COLORS[idx % DAY_COLORS.length];
 
 function load(){
@@ -596,13 +657,21 @@ function haversine(lat1,lng1,lat2,lng2){
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 }
 function colorFor(kind){
-  if(kind === "anchor") return "#e0b168";
-  if(kind === "signature") return "#e07070";
-  return "#7fd3e8";
+  if(kind === "anchor") return "#ffcf6b";
+  if(kind === "signature") return "#ff6f61";
+  return "#ff9a5a";
+}
+function gmapsQuery(s){
+  // Prefer a real place name so Google Maps (esp. the mobile app) shows a proper
+  // label instead of "Dropped pin" — fall back to raw coordinates if no name.
+  if(s.name){
+    const parts = [s.name, s.region].filter(Boolean).join(", ");
+    return encodeURIComponent(parts);
+  }
+  return `${s.lat},${s.lng}`;
 }
 function gmapsUrl(s){
-  const q = s.lat && s.lng ? `${s.lat},${s.lng}` : encodeURIComponent(s.name);
-  return `https://www.google.com/maps/search/?api=1&query=${q}`;
+  return `https://www.google.com/maps/search/?api=1&query=${gmapsQuery(s)}`;
 }
 
 /* ---------- OSRM road routing (with straight-line fallback) ---------- */
@@ -788,17 +857,17 @@ function renderMapMarkers(day){
   if(!day.stops.length) return;
 
   const latlngs = day.stops.map(s => [s.lat, s.lng]);
-  glowLine = L.polyline(latlngs, {color:"#0b1015", weight:5, opacity:0.35}).addTo(map);
-  routeLine = L.polyline(latlngs, {color:"#ffd166", weight:2.5, opacity:0.85, dashArray:"6,7"}).addTo(map);
+  glowLine = L.polyline(latlngs, {color:"#1c130f", weight:5, opacity:0.35}).addTo(map);
+  routeLine = L.polyline(latlngs, {color:"#ffcf6b", weight:2.5, opacity:0.85, dashArray:"6,7"}).addTo(map);
 
   day.stops.forEach((s, i) => {
     const icon = L.divIcon({
       className:"",
       html:`<div style="
-        width:26px;height:26px;border-radius:50%;background:${colorFor(s.kind)};color:#0b1015;
+        width:26px;height:26px;border-radius:50%;background:${colorFor(s.kind)};color:#1c130f;
         display:flex;align-items:center;justify-content:center;
         font-family:'SFMono-Regular',Consolas,monospace;font-size:11px;font-weight:700;
-        border:2px solid #0b1015;box-shadow:0 0 0 1px ${colorFor(s.kind)}88, 0 1px 3px rgba(0,0,0,.5);
+        border:2px solid #1c130f;box-shadow:0 0 0 1px ${colorFor(s.kind)}88, 0 1px 3px rgba(0,0,0,.5);
       ">${i+1}</div>`,
       iconSize:[26,26], iconAnchor:[13,13]
     });
@@ -825,8 +894,8 @@ async function refreshMainRoute(day){
   if(!route) return;
   if(routeLine) map.removeLayer(routeLine);
   if(glowLine) map.removeLayer(glowLine);
-  glowLine = L.polyline(route.coords, {color:"#0b1015", weight:5, opacity:0.32}).addTo(map);
-  routeLine = L.polyline(route.coords, {color:"#ffd166", weight:3, opacity:0.9}).addTo(map);
+  glowLine = L.polyline(route.coords, {color:"#1c130f", weight:5, opacity:0.32}).addTo(map);
+  routeLine = L.polyline(route.coords, {color:"#ffcf6b", weight:3, opacity:0.9}).addTo(map);
   renderStats(day, route);
 }
 
@@ -875,7 +944,7 @@ function renderList(day){
 
     if(showDirections && i < day.stops.length - 1){
       const next = day.stops[i+1];
-      const url = `https://www.google.com/maps/dir/?api=1&origin=${s.lat},${s.lng}&destination=${next.lat},${next.lng}`;
+      const url = `https://www.google.com/maps/dir/?api=1&origin=${gmapsQuery(s)}&destination=${gmapsQuery(next)}`;
       const conn = document.createElement("div");
       conn.className = "leg-connector";
       conn.innerHTML = `
@@ -1183,7 +1252,7 @@ async function refreshModalRoutes(){
     const dayMarkers = d.stops.map((s,i) => {
       const icon = L.divIcon({
         className:"",
-        html:`<div style="width:20px;height:20px;border-radius:50%;background:${color};color:#0b1015;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:10px;font-weight:700;border:2px solid #0b1015;">${i+1}</div>`,
+        html:`<div style="width:20px;height:20px;border-radius:50%;background:${color};color:#1c130f;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:10px;font-weight:700;border:2px solid #1c130f;">${i+1}</div>`,
         iconSize:[20,20], iconAnchor:[10,10]
       });
       return L.marker([s.lat,s.lng], {icon}).bindTooltip(s.name, {direction:"top"}).addTo(modalMap);
@@ -1201,7 +1270,7 @@ async function refreshModalRoutes(){
       for(let i=1;i<d.stops.length;i++) dist += haversine(d.stops[i-1].lat,d.stops[i-1].lng,d.stops[i].lat,d.stops[i].lng);
       dur = dist/65*60;
     }
-    const glow = L.polyline(coordsToUse, {color:"#0b1015", weight:5, opacity:0.3}).addTo(modalMap);
+    const glow = L.polyline(coordsToUse, {color:"#1c130f", weight:5, opacity:0.3}).addTo(modalMap);
     const routeL = L.polyline(coordsToUse, {color, weight:3, opacity:0.9}).addTo(modalMap);
     dayLayers[d.id] = {route: routeL, glow, markers: dayMarkers};
     totalDist += dist; totalDur += dur;
